@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat with Jarvis</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
+</head>
+
+<body class="bg-gray-100 flex justify-center items-center h-screen">
+    <div class="w-3/5 max-w-3xl h-full p-5 bg-white rounded-lg shadow-lg flex flex-col">
+        <h2 class="text-2xl font-bold mb-4 text-center">Chat with Jarvis</h2>
+
+        <div id="chat-box" class="flex-grow overflow-y-auto border-2 border-gray-300 p-4 rounded-lg space-y-4">
+            {% if not chat_history %}
+            <!-- Show this if there is no chat history -->
+            <div class="text-center text-gray-500">
+                <p class="text-lg">Start chatting</p>
+                <p class="text-sm">Try asking for a recipe:</p>
+                <div class="mt-2 flex flex-wrap justify-center gap-2">
+                    <span class="bg-blue-100 text-blue-600 text-sm font-semibold px-3 py-1 rounded-full">I need chicken biriyani recipe</span>
+                    <span class="bg-blue-100 text-blue-600 text-sm font-semibold px-3 py-1 rounded-full">I need BBQ pizza recipe</span>
+                    <span class="bg-blue-100 text-blue-600 text-sm font-semibold px-3 py-1 rounded-full">What's a quick dessert?</span>
+                </div>
+            </div>
+            {% else %}
+            <!-- Display chat history -->
+            {% for chat in chat_history %}
+            <div class="p-4 rounded-lg mb-4 {% if chat.sender == 'You' %}bg-gray-200 text-right{% else %}bg-blue-100{% endif %}">
+                <div class="font-semibold {% if chat.sender == 'You' %}text-gray-800{% else %}text-blue-600{% endif %}">{{ chat.sender }}:</div>
+                <div class="text-gray-800 whitespace-pre-wrap break-words">
+                    <pre class="whitespace-pre-wrap break-words">{{ chat.message }}</pre>
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+
+        <form method="post" action="{% url 'home' %}" class="flex items-center mt-4">
+            {% csrf_token %}
+            <input type="text" name="recipe_message" placeholder="Ask for a recipe..."
+                class="w-full p-2 border-2 border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
+            <button type="submit"
+                class="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded-r-lg">
+                Send
+            </button>
+        </form>
+    </div>
+</body>
+
+</html>

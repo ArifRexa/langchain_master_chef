@@ -1,0 +1,68 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django-specific
+*.log
+*.pot
+*.pyc
+*.pyo
+*.sqlite3
+*.env
+
+# If you are using PostgreSQL
+*.pgsql
+
+# Local environment settings
+.env
+*.local
+
+# Static and media files
+/staticfiles/
+/media/
+
+# Virtual environments
+env/
+venv/
+ENV/
+.venv/
+.VENV/
+
+# Editor directories and files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# macOS
+.DS_Store
+
+# Node.js
+node_modules/
+
+# Database files
+db.sqlite3
+
+# Deployment
+*.wsgi
+*.log
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+
+# Test and cache files
+.pytest_cache/
+.coveragerc
+.tox/
+
+# MyPy
+.mypy_cache/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# System Files
+Thumbs.db
