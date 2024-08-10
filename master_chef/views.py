@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views import View
-from master_cheif.ai_services.langchain import ask_recipe
-from master_cheif.forms import MasterCheifForm
+from master_chef.ai_services.langchain import ask_recipe
+from master_chef.forms import MasterCheifForm
 
 
 class HomeView(View):
@@ -77,8 +77,8 @@ class HomeView(View):
 # from django.shortcuts import render, redirect
 # from django.views import View
 
-# from master_cheif.ai_services.langchain import askRecipe
-# from master_cheif.forms import MasterCheifForm
+# from master_chef.ai_services.langchain import askRecipe
+# from master_chef.forms import MasterCheifForm
 
 
 # class HomeView(View):
